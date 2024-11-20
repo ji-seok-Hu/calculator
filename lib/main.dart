@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -55,71 +57,250 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  List<String> num_list = [];
+  List<String> ssss = [];
+  List<String> num_sign = [];
+  List<int> num_ssin = [];
+  List<int> empy = [];
+  // int number = 0;
+  void num0() {
+    log("0");
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      num_list.add('0');
+      ssss.add("0");
+    });
+  }
+
+  void num1() {
+    log("1");
+    setState(() {
+      num_list.add('1');
+      ssss.add("1");
+    });
+  }
+
+  void num2() {
+    log("2");
+    setState(() {
+      num_list.add('2');
+      ssss.add("2");
+    });
+  }
+
+  void num3() {
+    log("3");
+    setState(() {
+      num_list.add('3');
+      ssss.add("3");
+    });
+  }
+
+  void num4() {
+    log("4");
+    setState(() {
+      num_list.add('4');
+      ssss.add("4");
+    });
+  }
+
+  void num5() {
+    log("5");
+    setState(() {
+      num_list.add('5');
+      ssss.add("5");
+    });
+  }
+
+  void num6() {
+    log("6");
+    setState(() {
+      num_list.add('6');
+      ssss.add("6");
+    });
+  }
+
+  void num7() {
+    log("7");
+    setState(() {
+      num_list.add('7');
+      ssss.add("7");
+    });
+  }
+
+  void num8() {
+    log("8");
+    setState(() {
+      num_list.add('8');
+      ssss.add("8");
+    });
+  }
+
+  void num9() {
+    log("9");
+    setState(() {
+      num_list.add('9');
+      ssss.add("9");
+    });
+  }
+
+  void num_m() {
+    log("-");
+    setState(() {
+      num_list.add('-');
+      ssss.add(",");
+      num_sign.add('-');
+    });
+  }
+
+  void num_p() {
+    log("+");
+    setState(() {
+      num_list.add('+');
+      ssss.add(",");
+      num_sign.add("+");
+    });
+  }
+
+  void num_d() {
+    log("d");
+    setState(() {
+      num_list.clear();
+      ssss.clear();
+    });
+  }
+
+  void num_r() {
+    log("r");
+    setState(() {
+      ssss[0] = ssss.join();
+      List<String> result = ssss[0].split(',');
+      for (int i = 0; i < result.length; i++) {
+        int non = int.parse(result[i]);
+        empy.add(non);
+      }
+      print(empy);
+      for (int i = 0; i < num_sign.length; i++) {
+        if (num_sign[i] == "+") {
+          if (i == 0) {
+            num_ssin.add(empy[0]);
+            // print(num_ssin);
+            num_ssin[0] = num_ssin[0] + empy[1];
+          } else if (i > 0) {
+            num_ssin[0] = num_ssin[0] + empy[i + 1];
+            print(num_ssin);
+          }
+        } else if (num_sign[i] == "-") {
+          if (i == 0) {
+            num_ssin.add(empy[0]);
+            num_ssin[0] = num_ssin[0] - empy[1];
+          } else if (i > 0) {
+            num_ssin[0] = num_ssin[0] - empy[i + 1];
+          }
+        }
+      }
+      num_list.clear();
+      String str = num_ssin[0].toString();
+      num_ssin.clear();
+      num_list.add(str);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(num_list.join()),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () {
+              num0();
+            },
+            child: Text("0"),
+          ),
+          TextButton(
+            onPressed: () {
+              num1();
+            },
+            child: Text("1"),
+          ),
+          TextButton(
+            onPressed: () {
+              num2();
+            },
+            child: Text("2"),
+          ),
+          TextButton(
+            onPressed: () {
+              num3();
+            },
+            child: Text("3"),
+          ),
+          TextButton(
+            onPressed: () {
+              num4();
+            },
+            child: Text("4"),
+          ),
+          TextButton(
+            onPressed: () {
+              num5();
+            },
+            child: Text("5"),
+          ),
+          TextButton(
+            onPressed: () {
+              num6();
+            },
+            child: Text("6"),
+          ),
+          TextButton(
+            onPressed: () {
+              num7();
+            },
+            child: Text("7"),
+          ),
+          TextButton(
+            onPressed: () {
+              num8();
+            },
+            child: Text("8"),
+          ),
+          TextButton(
+            onPressed: () {
+              num9();
+            },
+            child: Text("9"),
+          ),
+          TextButton(
+            onPressed: () {
+              num_p();
+            },
+            child: Text("+"),
+          ),
+          TextButton(
+            onPressed: () {
+              num_m();
+            },
+            child: Text("-"),
+          ),
+          TextButton(
+            onPressed: () {
+              num_d();
+            },
+            child: Text("deal"),
+          ),
+          TextButton(
+            onPressed: () {
+              num_r();
+            },
+            child: Text("="),
+          ),
+        ],
+      )),
     );
   }
 }

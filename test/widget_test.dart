@@ -11,20 +11,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:coding/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  String str = "Dart And Flutter";
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  int index = str.indexOf("And");
+  print(index);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  index = str.indexOf("tter");
+  print(index);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  index = str.indexOf("Hello");
+  print(index);
 }
